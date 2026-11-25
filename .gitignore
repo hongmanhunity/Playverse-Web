@@ -20,6 +20,7 @@ client/.env
 .agent/
 design-system/
 *.md
+!README.md
 
 # Logs & OS files
 *.log
