@@ -1,13 +1,39 @@
 import { useRef } from 'react';
-import { Row, Col, Card, Tag, Carousel, Typography, Space, Button } from 'antd';
+import { Row, Col, Card, Tag, Carousel, Typography, Space, Button, Skeleton } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
 const { Title, Text, Paragraph } = Typography;
 
-const HeroBanner = ({ banners = [] }) => {
+const HeroBanner = ({ banners = [], loading = false }) => {
   const navigate = useNavigate();
   const carouselRef = useRef(null);
+
+  if (loading) {
+    return (
+      <div className="pv-hero-slide" style={{ marginBottom: 28, cursor: 'default' }}>
+        <Row align="stretch">
+          <Col xs={24} md={14}>
+            <div className="pv-hero-media pv-hero-skeleton-media" />
+          </Col>
+          <Col
+            xs={24}
+            md={10}
+            style={{
+              padding: '32px 52px 32px 36px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 60%, #EEF2FF 100%)',
+            }}
+          >
+            <Skeleton active title={{ width: '75%' }} paragraph={{ rows: 3, width: ['45%', '95%', '80%'] }} />
+            <Skeleton.Button active style={{ width: 132, height: 34, marginTop: 14, borderRadius: 8 }} />
+          </Col>
+        </Row>
+      </div>
+    );
+  }
 
   if (banners.length === 0) {
     return (

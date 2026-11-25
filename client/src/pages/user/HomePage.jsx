@@ -12,6 +12,7 @@ const { Title, Text } = Typography;
 const HomePage = () => {
   const [games, setGames] = useState([]);
   const [banners, setBanners] = useState([]);
+  const [bannersLoading, setBannersLoading] = useState(true);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
@@ -26,6 +27,8 @@ const HomePage = () => {
         setBanners(res.data || []);
       } catch {
         // Bỏ qua lỗi banner nếu chưa có dữ liệu
+      } finally {
+        setBannersLoading(false);
       }
     };
     fetchBanners();
@@ -54,7 +57,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <HeroBanner banners={banners} />
+      <HeroBanner banners={banners} loading={bannersLoading} />
 
       <GameFilterBar
         category={category}
