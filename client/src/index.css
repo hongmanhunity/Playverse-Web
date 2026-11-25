@@ -1,0 +1,307 @@
+/* Design Tokens - UI/UX Pro Max (Light Modern & Refined - PlayVerse) */
+:root {
+  --pv-primary: #4f46e5;
+  --pv-primary-light: #6366f1;
+  --pv-primary-soft: #eef2ff;
+  --pv-accent: #10b981;
+  --pv-danger: #ef4444;
+  --pv-bg: #f8fafc;
+  --pv-surface: #ffffff;
+  --pv-border: #e2e8f0;
+  --pv-text: #0f172a;
+  --pv-text-muted: #475569;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--pv-bg);
+  color: var(--pv-text);
+  font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-heading {
+  font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.pv-logo-wordmark {
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  user-select: none;
+  display: inline-block;
+}
+
+.pv-logo-accent {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.font-mono-num {
+  font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Light Glassmorphic Sticky Header */
+.pv-light-header {
+  background: rgba(255, 255, 255, 0.86) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--pv-border);
+}
+
+/* Modern Clean Card */
+.pv-modern-card {
+  background: var(--pv-surface) !important;
+  border: 1px solid var(--pv-border) !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  transition: border-color 200ms ease, box-shadow 200ms ease !important;
+}
+
+/* Game Card (Crisp elevation on hover, no layout shift) */
+.pv-game-card {
+  background: var(--pv-surface) !important;
+  border: 1px solid var(--pv-border) !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  cursor: pointer;
+  transition: border-color 220ms ease, box-shadow 220ms ease !important;
+}
+
+.pv-game-card:hover {
+  border-color: #a5b4fc !important;
+  box-shadow: 0 12px 24px -6px rgba(79, 70, 229, 0.12), 0 4px 8px -4px rgba(15, 23, 42, 0.06) !important;
+}
+
+.pv-game-card-cover {
+  overflow: hidden;
+  position: relative;
+  height: 186px;
+  background: #f1f5f9;
+}
+
+.pv-game-card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+.pv-game-card:hover .pv-game-card-cover img {
+  transform: scale(1.04);
+}
+
+.pv-discount-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ef4444;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+}
+
+/* Hero Banner (Split Showcase matching 616x353 capsule ratio cleanly) */
+.pv-hero-slide {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid var(--pv-border);
+  box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.08);
+}
+
+.pv-hero-media {
+  width: 100%;
+  aspect-ratio: 616 / 353;
+  max-height: 380px;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.pv-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Custom Carousel & Gallery Arrows */
+.pv-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+.pv-gallery-arrow:hover {
+  background: #4f46e5;
+  border-color: #4f46e5;
+}
+
+.pv-hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 15;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  color: #334155;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.pv-hero-arrow:hover {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  color: #ffffff;
+}
+
+.pv-btn-smooth {
+  border-radius: 999px !important;
+  height: 40px !important;
+  padding: 0 22px !important;
+  font-weight: 500 !important;
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%) !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.22) !important;
+  transition: box-shadow 200ms ease, filter 200ms ease !important;
+}
+
+.pv-btn-smooth:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.32) !important;
+}
+
+/* Ẩn thanh cuộn ngang xấu ở dải ảnh preview */
+.pv-thumb-strip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pv-thumb-strip::-webkit-scrollbar {
+  display: none;
+}
+
+/* Admin KPI Cards */
+.admin-kpi-card {
+  border-radius: 12px !important;
+  border: 1px solid var(--pv-border) !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  transition: box-shadow 200ms ease, border-color 200ms ease !important;
+}
+
+.admin-kpi-card:hover {
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.08) !important;
+}
+
+/* Hiển thị rõ các sao chưa chọn của Antd Rate trên nền sáng */
+.ant-rate .ant-rate-star-zero .ant-rate-star-first,
+.ant-rate .ant-rate-star-zero .ant-rate-star-second {
+  color: #cbd5e1;
+}
+
+/* Hiển thị logo nhỏ ở Auth trên màn hình mobile khi cột trái ẩn */
+@media (min-width: 992px) {
+  .lg-hide-logo {
+    display: none;
+  }
+}
+
+/* Gắn nhãn (label) gần với ô Input hơn cho toàn bộ Form vertical */
+.ant-form-vertical .ant-form-item-label {
+  padding: 0 0 4px !important;
+}
+
+.ant-form-vertical .ant-form-item-label > label {
+  height: auto !important;
+  font-weight: 500;
+  font-size: 13.5px;
+  color: #334155;
+}
+
+/* Giao diện 6 ô nhập OTP sắc nét & hiện đại */
+.pv-otp-input.ant-otp {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.pv-otp-input .ant-otp-input {
+  flex: 1;
+  height: 52px;
+  border-radius: 12px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  background: #f8fafc;
+  transition: all 180ms ease;
+}
+
+.pv-otp-input .ant-otp-input:hover {
+  border-color: #94a3b8 !important;
+  background: #ffffff;
+}
+
+.pv-otp-input .ant-otp-input:focus {
+  border-color: #4f46e5 !important;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.14) !important;
+}
+
+/* Focus accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--pv-primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

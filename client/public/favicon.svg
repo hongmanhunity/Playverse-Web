@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="pvSquircle" x1="4" y1="2" x2="60" y2="62" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="52%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+    <linearGradient id="pvRim" x1="6" y1="4" x2="58" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.42" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.08" />
+    </linearGradient>
+    <linearGradient id="pvEmerald" x1="34" y1="19" x2="51" y2="45" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A7F3D0" />
+      <stop offset="100%" stop-color="#34D399" />
+    </linearGradient>
+    <filter id="pvShadow" x="8" y="16" width="48" height="36" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.8" flood-color="#0F172A" flood-opacity="0.34" />
+    </filter>
+  </defs>
+
+  <!-- PlayVerse App Badge -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#pvSquircle)" />
+  <rect x="3" y="3" width="58" height="58" rx="15" stroke="url(#pvRim)" stroke-width="1.5" />
+
+  <!-- Dynamic slanted PV Monogram (matching Chakra Petch italic wordmark) -->
+  <g transform="translate(32 32) skewX(-8) translate(-32 -32)" filter="url(#pvShadow)">
+    <!-- Letter P (Crisp White) -->
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M12.5 19H27.7L31.3 22.6V30.4L27.7 34H18.5V45H12.5V19ZM18.5 24V29H24.9L25.9 28V25L24.9 24H18.5Z"
+      fill="#FFFFFF"
+    />
+    <!-- Letter V (PlayVerse Emerald Accent) -->
+    <path
+      d="M33.7 19H39.9L42.6 35.8L45.3 19H51.5L45.3 45H39.9L33.7 19Z"
+      fill="url(#pvEmerald)"
+    />
+  </g>
+</svg>
