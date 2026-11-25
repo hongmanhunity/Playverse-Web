@@ -5,19 +5,8 @@ const ApiError = require('../utils/ApiError');
 const { escapeRegex } = require('../utils/regexUtils');
 
 const ALLOWED_GAME_FIELDS = [
-  'title',
-  'publisher',
-  'category',
-  'tags',
-  'description',
-  'price',
-  'discount',
-  'size',
-  'downloads',
-  'thumbnail',
-  'heroBanner',
-  'screenshots',
-  'levels',
+  'title', 'publisher', 'category', 'tags', 'description', 'price',
+  'discount', 'size', 'downloads', 'thumbnail', 'heroBanner', 'screenshots', 'levels',
 ];
 
 const pickGameFields = (payload = {}) => {
@@ -136,10 +125,4 @@ const deleteGameById = async (id) => {
   ]);
 };
 
-module.exports = {
-  listGames,
-  getGameByIdOrSlug,
-  createNewGame,
-  updateGameById,
-  deleteGameById,
-};
+module.exports = { listGames, getGameByIdOrSlug, createNewGame, updateGameById, deleteGameById };

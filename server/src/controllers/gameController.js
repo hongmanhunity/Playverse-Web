@@ -37,12 +37,4 @@ const deleteGame = asyncHandler(async (req, res) => {
   res.json({ success: true, message: 'Xóa game và toàn bộ dữ liệu liên quan thành công' });
 });
 
-module.exports = {
-  getGames,
-  getPopularGames,
-  getFlashGames,
-  getGameById,
-  createGame,
-  updateGame,
-  deleteGame,
-};
+module.exports = { getGames, getPopularGames, getFlashGames, getGameById, createGame, updateGame, deleteGame };

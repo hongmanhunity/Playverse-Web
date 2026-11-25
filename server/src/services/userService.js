@@ -95,8 +95,4 @@ const deleteUser = async (id, actorId) => {
   ]);
 };
 
-module.exports = {
-  listUsers,
-  updateUser,
-  deleteUser,
-};
+module.exports = { listUsers, updateUser, deleteUser };

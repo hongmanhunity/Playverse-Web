@@ -42,10 +42,4 @@ const clearRefreshTokenCookie = (res) => {
   });
 };
 
-module.exports = {
-  generateTokens,
-  verifyAccessToken,
-  verifyRefreshToken,
-  setRefreshTokenCookie,
-  clearRefreshTokenCookie,
-};
+module.exports = { generateTokens, verifyAccessToken, verifyRefreshToken, setRefreshTokenCookie, clearRefreshTokenCookie };

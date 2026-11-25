@@ -25,8 +25,4 @@ const deleteUserByAdmin = asyncHandler(async (req, res) => {
   res.json({ success: true, message: 'Đã xóa người dùng và toàn bộ dữ liệu liên quan' });
 });
 
-module.exports = {
-  getUsers,
-  updateUserByAdmin,
-  deleteUserByAdmin,
-};
+module.exports = { getUsers, updateUserByAdmin, deleteUserByAdmin };

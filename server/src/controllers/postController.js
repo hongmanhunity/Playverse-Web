@@ -170,12 +170,4 @@ const deletePostComment = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = {
-  getPosts,
-  createPost,
-  toggleLikePost,
-  getPostComments,
-  addPostComment,
-  deletePost,
-  deletePostComment,
-};
+module.exports = { getPosts, createPost, toggleLikePost, getPostComments, addPostComment, deletePost, deletePostComment };

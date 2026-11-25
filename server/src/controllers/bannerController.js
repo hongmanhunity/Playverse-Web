@@ -93,10 +93,4 @@ const deleteBanner = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = {
-  getBanners,
-  getBannerById,
-  createBanner,
-  updateBanner,
-  deleteBanner,
-};
+module.exports = { getBanners, getBannerById, createBanner, updateBanner, deleteBanner };

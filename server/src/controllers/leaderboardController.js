@@ -99,8 +99,4 @@ const submitScore = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = {
-  getGlobalLeaderboard,
-  getGameLeaderboard,
-  submitScore,
-};
+module.exports = { getGlobalLeaderboard, getGameLeaderboard, submitScore };

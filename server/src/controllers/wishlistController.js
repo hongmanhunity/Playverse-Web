@@ -44,7 +44,4 @@ const toggleWishlist = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = {
-  getWishlist,
-  toggleWishlist,
-};
+module.exports = { getWishlist, toggleWishlist };

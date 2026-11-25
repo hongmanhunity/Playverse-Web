@@ -55,10 +55,4 @@ const reviewLimiter = rateLimit({
   },
 });
 
-module.exports = {
-  apiLimiter,
-  authLimiter,
-  scoreLimiter,
-  postLimiter,
-  reviewLimiter,
-};
+module.exports = { apiLimiter, authLimiter, scoreLimiter, postLimiter, reviewLimiter };

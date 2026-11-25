@@ -145,9 +145,4 @@ const deleteReview = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = {
-  getReviewsByGame,
-  addReview,
-  getAllReviews,
-  deleteReview,
-};
+module.exports = { getReviewsByGame, addReview, getAllReviews, deleteReview };

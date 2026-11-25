@@ -6,12 +6,7 @@ const User = require('../models/User');
 const OtpVerification = require('../models/OtpVerification');
 const { sendOtpEmail } = require('../services/emailService');
 const asyncHandler = require('../utils/asyncHandler');
-const {
-  generateTokens,
-  verifyRefreshToken,
-  setRefreshTokenCookie,
-  clearRefreshTokenCookie,
-} = require('../utils/tokenUtils');
+const { generateTokens, verifyRefreshToken, setRefreshTokenCookie, clearRefreshTokenCookie } = require('../utils/tokenUtils');
 
 /**
  * Lưu refresh token vào DB (tối đa 5 phiên hoạt động)
@@ -668,16 +663,7 @@ const resetPassword = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-  registerUser,
-  verifyRegisterOtp,
-  resendRegisterOtp,
-  loginUser,
-  refreshTokenHandler,
-  logoutUser,
-  googleAuth,
-  getUserProfile,
-  updateProfile,
-  changePassword,
-  forgotPassword,
-  resetPassword,
+  registerUser, verifyRegisterOtp, resendRegisterOtp, loginUser,
+  refreshTokenHandler, logoutUser, googleAuth, getUserProfile,
+  updateProfile, changePassword, forgotPassword, resetPassword,
 };

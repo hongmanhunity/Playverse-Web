@@ -51,8 +51,4 @@ const deleteNotification = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = {
-  getNotifications,
-  createNotification,
-  deleteNotification,
-};
+module.exports = { getNotifications, createNotification, deleteNotification };
