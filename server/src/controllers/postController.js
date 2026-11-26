@@ -27,24 +27,65 @@ const getPosts = asyncHandler(async (req, res) => {
   });
 });
 
-const createPost = asyncHandler(async (req, res) => {
-  const { title, content, gameTitle } = req.body;
+const ALLOWED_POST_TYPES = ['discussion', 'guide', 'lfg', 'showcase', 'question'];
+const MAX_POST_TITLE_LENGTH = 100;
+const MAX_POST_CONTENT_LENGTH = 1000;
+const MAX_COMMENT_LENGTH = 500;
 
-  if (!title || !content) {
+const isSafePostImage = (val) => {
+  if (!val) return true;
+  if (/^https?:\/\/\S+$/i.test(val)) return true;
+  if (/^data:image\/(png|jpeg|jpg|webp|gif);base64,[A-Za-z0-9+/=]+$/i.test(val) && val.length <= 4 * 1024 * 1024) {
+    return true;
+  }
+  return false;
+};
+
+const createPost = asyncHandler(async (req, res) => {
+  const { title, content, gameTitle, postType, platform, imageUrl } = req.body;
+
+  const cleanTitle = typeof title === 'string' ? title.trim() : '';
+  const cleanContent = typeof content === 'string' ? content.trim() : '';
+
+  if (!cleanTitle || !cleanContent) {
     return res.status(400).json({ success: false, message: 'Tiêu đề và nội dung bài viết không được để trống' });
+  }
+
+  if (cleanTitle.length > MAX_POST_TITLE_LENGTH) {
+    return res.status(400).json({
+      success: false,
+      message: `Tiêu đề bài viết tối đa ${MAX_POST_TITLE_LENGTH} ký tự`,
+    });
+  }
+
+  if (cleanContent.length > MAX_POST_CONTENT_LENGTH) {
+    return res.status(400).json({
+      success: false,
+      message: `Nội dung bài viết tối đa ${MAX_POST_CONTENT_LENGTH} ký tự`,
+    });
   }
 
   if (!req.user) {
     return res.status(401).json({ success: false, message: 'Bạn cần đăng nhập để tạo bài viết' });
   }
 
+  const cleanImage = typeof imageUrl === 'string' ? imageUrl.trim() : '';
+  if (!isSafePostImage(cleanImage)) {
+    return res.status(400).json({ success: false, message: 'Ảnh đính kèm không hợp lệ hoặc vượt quá 3MB' });
+  }
+
+  const safePostType = ALLOWED_POST_TYPES.includes(postType) ? postType : 'discussion';
+
   const post = await Post.create({
     user: req.user._id,
     authorName: req.user.username || 'PlayVerse Gamer',
     authorAvatar: req.user.avatar || '',
-    gameTitle: gameTitle || 'Chung',
-    title: title.trim(),
-    content: content.trim(),
+    gameTitle: typeof gameTitle === 'string' && gameTitle.trim() ? gameTitle.trim().slice(0, 80) : 'Chung',
+    postType: safePostType,
+    platform: typeof platform === 'string' ? platform.trim().slice(0, 30) : '',
+    imageUrl: cleanImage,
+    title: cleanTitle,
+    content: cleanContent,
   });
 
   res.status(201).json({
@@ -97,9 +138,17 @@ const getPostComments = asyncHandler(async (req, res) => {
 
 const addPostComment = asyncHandler(async (req, res) => {
   const { content } = req.body;
+  const cleanComment = typeof content === 'string' ? content.trim() : '';
 
-  if (!content || !content.trim()) {
+  if (!cleanComment) {
     return res.status(400).json({ success: false, message: 'Nội dung bình luận không được để trống' });
+  }
+
+  if (cleanComment.length > MAX_COMMENT_LENGTH) {
+    return res.status(400).json({
+      success: false,
+      message: `Nội dung bình luận tối đa ${MAX_COMMENT_LENGTH} ký tự`,
+    });
   }
 
   if (!req.user) {
@@ -116,7 +165,7 @@ const addPostComment = asyncHandler(async (req, res) => {
     user: req.user._id,
     authorName: req.user.username || 'PlayVerse Gamer',
     authorAvatar: req.user.avatar || '',
-    content: content.trim(),
+    content: cleanComment,
   });
 
   post.commentsCount += 1;

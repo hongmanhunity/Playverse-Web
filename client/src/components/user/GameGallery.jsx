@@ -21,23 +21,13 @@ const GameGallery = ({ title, mediaList = [] }) => {
 
   return (
     <div>
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', marginBottom: mediaList.length > 1 ? 10 : 0 }}>
         <Image.PreviewGroup items={mediaList}>
-          <div
-            style={{
-              borderRadius: 12,
-              overflow: 'hidden',
-              border: '1px solid #E2E8F0',
-              background: '#F1F5F9',
-              marginBottom: 10,
-            }}
-          >
+          <div className="pv-detail-media">
             <Image
               src={selectedImage}
               alt={title}
-              width="100%"
-              height={310}
-              style={{ objectFit: 'cover', display: 'block', cursor: 'pointer' }}
+              style={{ cursor: 'pointer' }}
             />
           </div>
         </Image.PreviewGroup>
@@ -48,7 +38,7 @@ const GameGallery = ({ title, mediaList = [] }) => {
               type="button"
               aria-label="Ảnh trước"
               className="pv-gallery-arrow"
-              style={{ left: 10 }}
+              style={{ left: 14 }}
               onClick={handlePrev}
             >
               <LeftOutlined style={{ fontSize: 13 }} />
@@ -57,7 +47,7 @@ const GameGallery = ({ title, mediaList = [] }) => {
               type="button"
               aria-label="Ảnh tiếp theo"
               className="pv-gallery-arrow"
-              style={{ right: 10 }}
+              style={{ right: 14 }}
               onClick={handleNext}
             >
               <RightOutlined style={{ fontSize: 13 }} />
@@ -66,14 +56,15 @@ const GameGallery = ({ title, mediaList = [] }) => {
               className="font-mono-num"
               style={{
                 position: 'absolute',
-                bottom: 20,
+                bottom: 12,
                 right: 12,
                 zIndex: 10,
                 background: 'rgba(15, 23, 42, 0.72)',
+                backdropFilter: 'blur(6px)',
                 color: '#fff',
-                fontSize: 11,
+                fontSize: 11.5,
                 fontWeight: 600,
-                padding: '2px 9px',
+                padding: '3px 10px',
                 borderRadius: 999,
                 pointerEvents: 'none',
               }}
@@ -93,12 +84,13 @@ const GameGallery = ({ title, mediaList = [] }) => {
                 key={imgUrl + idx}
                 onClick={() => setActiveIndex(idx)}
                 style={{
-                  height: 52,
+                  height: 58,
                   borderRadius: 8,
                   overflow: 'hidden',
                   cursor: 'pointer',
                   border: isActive ? '2px solid #4F46E5' : '1px solid #E2E8F0',
-                  opacity: isActive ? 1 : 0.7,
+                  opacity: isActive ? 1 : 0.68,
+                  boxShadow: isActive ? '0 3px 10px rgba(79, 70, 229, 0.2)' : 'none',
                   transition: 'all 180ms ease',
                 }}
               >

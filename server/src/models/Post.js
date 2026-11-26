@@ -19,13 +19,30 @@ const postSchema = new mongoose.Schema(
       type: String,
       default: 'Chung',
     },
+    postType: {
+      type: String,
+      enum: ['discussion', 'guide', 'lfg', 'showcase', 'question'],
+      default: 'discussion',
+    },
+    platform: {
+      type: String,
+      default: '',
+    },
+    imageUrl: {
+      type: String,
+      default: '',
+    },
     title: {
       type: String,
       required: true,
+      trim: true,
+      maxlength: [100, 'Tiêu đề bài viết tối đa 100 ký tự'],
     },
     content: {
       type: String,
       required: true,
+      trim: true,
+      maxlength: [1000, 'Nội dung bài viết tối đa 1000 ký tự'],
     },
     likesCount: {
       type: Number,

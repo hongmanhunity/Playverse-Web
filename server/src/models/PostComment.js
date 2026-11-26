@@ -23,6 +23,8 @@ const postCommentSchema = new mongoose.Schema(
     content: {
       type: String,
       required: true,
+      trim: true,
+      maxlength: [500, 'Nội dung bình luận tối đa 500 ký tự'],
     },
   },
   {
