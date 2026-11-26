@@ -137,7 +137,7 @@ const GameReviewsTab = ({ game, reviews = [], user, submitting, onSubmitReview }
                 <Form.Item
                   name="comment"
                   rules={[{ required: true, whitespace: true, message: 'Vui lòng nhập nhận xét của bạn' }]}
-                  style={{ marginBottom: 12 }}
+                  style={{ marginBottom: 18 }}
                 >
                   <Input.TextArea
                     rows={3}
@@ -230,6 +230,7 @@ const GameReviewsTab = ({ game, reviews = [], user, submitting, onSubmitReview }
                     color: '#334155',
                     fontSize: 13.5,
                     lineHeight: 1.6,
+                    whiteSpace: 'pre-line',
                     overflowWrap: 'anywhere',
                     wordBreak: 'break-word',
                   }}

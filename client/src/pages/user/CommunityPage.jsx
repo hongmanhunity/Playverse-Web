@@ -296,7 +296,7 @@ const CommunityPage = () => {
   };
 
   const handleAddComment = async () => {
-    if (!activeCommentPost) return;
+    if (!activeCommentPost || commentSending) return;
     if (!user) {
       message.info('Vui lòng đăng nhập để bình luận');
       navigate('/login');
@@ -852,6 +852,7 @@ const CommunityPage = () => {
                 placeholder={user ? 'Viết bình luận của bạn (tối đa 500 ký tự)...' : 'Đăng nhập để bình luận...'}
                 value={commentInput}
                 maxLength={500}
+                disabled={commentSending}
                 onChange={(e) => setCommentInput(e.target.value)}
                 onPressEnter={handleAddComment}
               />
