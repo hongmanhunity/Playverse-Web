@@ -15,6 +15,8 @@ import HomePage from '../pages/user/HomePage';
 import GameDetailPage from '../pages/user/GameDetailPage';
 import WishlistPage from '../pages/user/WishlistPage';
 import LeaderboardPage from '../pages/user/LeaderboardPage';
+import CommunityPage from '../pages/user/CommunityPage';
+import ProfilePage from '../pages/user/ProfilePage';
 
 // Admin Pages
 import AdminDashboardPage from '../pages/admin/AdminDashboardPage';
@@ -31,12 +33,21 @@ const AppRouter = () => {
       <Route element={<UserLayout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/games/:id" element={<GameDetailPage />} />
+        <Route path="/community" element={<CommunityPage />} />
         <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route
           path="/wishlist"
           element={
             <ProtectedRoute>
               <WishlistPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
             </ProtectedRoute>
           }
         />

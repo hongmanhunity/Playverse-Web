@@ -82,6 +82,26 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const updateProfile = async (payload) => {
+    const res = await authApi.updateProfile(payload);
+    if (res?.data) {
+      setUser(res.data);
+      localStorage.setItem('user', JSON.stringify(res.data));
+    }
+    return res;
+  };
+
+  const changePassword = async (payload) => {
+    const res = await authApi.changePassword(payload);
+    if (res?.data?.accessToken) {
+      localStorage.setItem('accessToken', res.data.accessToken);
+      if (res.data.refreshToken) {
+        localStorage.setItem('refreshToken', res.data.refreshToken);
+      }
+    }
+    return res;
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -92,6 +112,8 @@ export const AuthProvider = ({ children }) => {
         register,
         verifyRegisterOtp,
         logout,
+        updateProfile,
+        changePassword,
       }}
     >
       {children}

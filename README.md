@@ -2,6 +2,8 @@
 
 Nền tảng khám phá trò chơi, đánh giá cộng đồng, bảng xếp hạng và quản trị hệ thống, xây dựng theo mô hình Full-Stack Monorepo (`server/` + `client/`).
 
+- **Live Demo:** https://playverse.id.vn
+
 ## Công nghệ sử dụng
 
 - **Frontend (`client/`):** React, Vite, Ant Design, React Router, Axios

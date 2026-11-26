@@ -3,6 +3,8 @@ import {
   HomeOutlined,
   HeartOutlined,
   TrophyOutlined,
+  TeamOutlined,
+  SettingOutlined,
   LoginOutlined,
   LogoutOutlined,
   DashboardOutlined,
@@ -11,6 +13,7 @@ import {
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import BrandLogo from '../components/BrandLogo';
+import NotificationBell from '../components/user/NotificationBell';
 
 const { Header, Content, Footer } = Layout;
 const { Text } = Typography;
@@ -27,6 +30,7 @@ const UserLayout = () => {
 
   const navItems = [
     { key: '/', icon: <HomeOutlined />, label: <Link to="/">Khám phá</Link> },
+    { key: '/community', icon: <TeamOutlined />, label: <Link to="/community">Cộng đồng</Link> },
     { key: '/wishlist', icon: <HeartOutlined />, label: <Link to="/wishlist">Yêu thích</Link> },
     { key: '/leaderboard', icon: <TrophyOutlined />, label: <Link to="/leaderboard">Bảng xếp hạng</Link> },
   ];
@@ -48,6 +52,12 @@ const UserLayout = () => {
       ),
     },
     { type: 'divider' },
+    {
+      key: 'profile',
+      icon: <SettingOutlined />,
+      label: 'Hồ sơ & Bảo mật',
+      onClick: () => navigate('/profile'),
+    },
     ...(isAdmin
       ? [
           {
@@ -129,6 +139,7 @@ const UserLayout = () => {
             </div>
 
             <Space size="middle">
+              <NotificationBell />
               {user ? (
                 <>
                   {isAdmin && (
